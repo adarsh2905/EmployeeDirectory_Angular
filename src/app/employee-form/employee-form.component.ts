@@ -3,7 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Employee } from '../employee.model';
 import { EmployeeDataService } from '../employee-data.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { sideBarData } from '../sidebar-data';
 
 @Component({
   selector: 'app-employee-form',
@@ -13,13 +14,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class EmployeeFormComponent implements OnInit {
   employeeForm!: FormGroup;
   encodedImageUrl!: string;
-  offices = ['India', 'Seattle'];
-  departments = ['IT', 'HR', 'MD', 'UX', 'Sales'];
-  jobTitles = ['SharePoint Practice Head', 'Development Lead - Dot Net', 'Recruiting Expert', 'BI Developer',
-    'Business Analyst', 'Operations Manager', 'Product Manager', 'Network Engineer', 'Talent Magnet Jr.',
-    'Software Engineer', 'UI Designer'];
 
-  constructor(private employeeDataService: EmployeeDataService, public dialogRef: MatDialogRef<EmployeeFormComponent>) { }
+  constructor(private employeeDataService: EmployeeDataService, public dialogRef: MatDialogRef<EmployeeFormComponent>, private sideBarData : sideBarData) { }
+
+  offices = this.sideBarData.offices;
+  departments = this.sideBarData.departments;
+  jobTitles = this.sideBarData.jobTitles;
 
   ngOnInit(): void {
     this.employeeForm = new FormGroup({

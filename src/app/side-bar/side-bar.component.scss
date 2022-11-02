@@ -9,8 +9,18 @@ div {
 
 		li{
 			font-size: 22px;
-			color: $paragraph-color;
 			list-style: none;
+
+			a{
+				text-decoration: none;
+				cursor: pointer;
+				color: $paragraph-color;
+			}
+
+			a:hover {
+				text-decoration: underline;
+				color: blue;
+			}
 		}
 	}
 }

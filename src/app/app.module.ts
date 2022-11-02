@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { EmployeeDataService } from './employee-data.service';
+import { sideBarData } from './sidebar-data';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { EmployeeDataService } from './employee-data.service';
     MatDialogModule,
     BrowserAnimationsModule
   ],
-  providers: [EmployeeDataService],
+  providers: [EmployeeDataService, sideBarData],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
