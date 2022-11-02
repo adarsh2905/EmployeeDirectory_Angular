@@ -1,0 +1,16 @@
+<div class="d-flex searchBar">
+    <div>
+        <form>
+            <label for="search">Search</label>
+            <input type="text" #searchKey name="search" (keyup)="filterByKeyword(searchKey.value, filter.value)" placeholder="Enter any keyword" class="fontAwesome" />
+            <input type="reset" value="Clear" class="clearButton" (click)="clearInput()"/>
+        </form>
+    </div>
+    <div>
+        <label for="filter">Filter by</label>
+        <select name="filterBy" class="filter" #filter (change)="setFilterValue($event)" [value]="filters[0]">
+            <option *ngFor="let filter of filters" [value]="filter">{{filter}}</option>
+        </select>
+        <button type="button" id="addEmployee" class="btn btn-primary" (click)="openFormDialog()">Add Employee</button>
+    </div>
+</div>

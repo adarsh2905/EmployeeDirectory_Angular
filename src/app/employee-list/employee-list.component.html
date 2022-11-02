@@ -1,0 +1,17 @@
+<div class="employee-list">
+<div class="col-4 d-flex" id="imgList" *ngFor="let employee of employeeList">
+    <div><img src={{employee.imageUrl}} alt="employee Pic" class="employeeListImage"></div>
+    <div class="insiderContent">
+        <h5><a href="" (click)="openProfile(employee.id)">{{employee.preferredName}}</a></h5>
+        <p>{{employee.jobTitle}}</p>
+        <p>{{employee.department}} Department</p>
+        <div class="d-flex">
+            <div><a href="#"><i class="fa-solid fa-phone icons"></i></a></div>
+            <div><a href="#"><i class="fa-sharp fa-solid fa-envelope icons"></i></a></div>
+            <div><a href="#"><i class="fa-sharp fa-solid fa-comment icons"></i></a></div>
+            <div><a href="#"><i class="fa-sharp fa-solid fa-star icons"></i></a></div>
+            <div><a href="#"><i class="fa-sharp fa-solid fa-heart icons"></i></a></div>
+        </div>
+    </div>
+</div>
+</div>

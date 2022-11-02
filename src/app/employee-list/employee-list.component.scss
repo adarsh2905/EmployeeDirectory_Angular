@@ -1,0 +1,43 @@
+@import '../../styles.scss';
+
+.employee-list {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    gap: 1rem;
+}
+
+#imgList {
+    background-color: #E9E8E8;
+    margin: 10px 5px;
+    width: 100%;
+    border-radius: 5px;
+
+    .employeeListImage {
+        padding-left: 10px;
+        height: 100px;
+        width: 80px;
+        margin-top: 10%;
+    }
+
+    .insiderContent {
+        padding: 10px;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+        }
+
+        p {
+            line-height: 4px;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.7)
+        }
+
+        .icons {
+            margin-right: 10px;
+            color: $paragraph-color;
+        }
+    }
+
+
+}

@@ -1,0 +1,49 @@
+@import '../../styles.scss';
+$dimension: 360px;
+
+.profilePopup {
+    border-radius: 10px;
+    background-color:#E9E8E8;
+    padding-top: 0%;
+    justify-content: center;
+
+    .btn-close {
+        float: right;
+        margin-left: 20em;
+    } 
+
+    img {
+        width: 100%;
+        min-height:440px;
+        max-height: 440px;
+    }
+
+    h1 {
+        margin-left: 20%;
+    }
+
+    p{
+        margin-left: 5%;
+        span{
+            font-weight: 500;
+        }
+    }
+
+    .profileDescription {
+        font-size: 22px;
+        line-height: 16px;
+    }
+
+    #edit {
+        margin-top: 10px;
+        min-width: 80px;
+        margin-bottom: 10px;
+        align-items: center;
+    }
+
+    #delete {
+        background-color: #EB118E;
+        min-width: 80px;
+        margin-left: 20%;
+    }
+}

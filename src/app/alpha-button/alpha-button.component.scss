@@ -1,0 +1,8 @@
+@import '../../styles.scss';
+
+.myBtn {
+  @include button-config;
+    width: 48px;
+    margin: 2px;
+    background-color: $heading-color;
+  }

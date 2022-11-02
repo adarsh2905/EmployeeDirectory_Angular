@@ -1,0 +1,16 @@
+@import '../../styles.scss';
+
+div {
+	width: 390px;
+	padding-left: 5%;
+
+	ul {
+		margin-bottom: 15%;
+
+		li{
+			font-size: 22px;
+			color: $paragraph-color;
+			list-style: none;
+		}
+	}
+}

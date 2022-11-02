@@ -1,0 +1,4 @@
+<div class="d-inline-block">
+    <button class = "myBtn"><i class = "fa fa-user" (click)="getAllEmployees()"></i></button>
+    <button class="myBtn" *ngFor="let alphabet of alphabets" (click)="getFilteredData(alphabet)">{{alphabet}}</button>
+</div>

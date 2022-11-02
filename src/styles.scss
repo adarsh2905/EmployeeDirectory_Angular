@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+$paragraph-color: rgb(129, 128, 128);
+$heading-color:#00B1FC;
+$headingFont-weight: 200;
+$fontStyle:'Helvetica', FontAwesome, sans-serif; 
+$fontColor: white;
+
+@mixin button-config() {
+    font-family:$fontStyle;
+    height: 48px;
+    color: $fontColor;
+    border: none;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+}

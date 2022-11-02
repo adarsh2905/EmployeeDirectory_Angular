@@ -1,0 +1,56 @@
+@import '../../styles.scss';
+
+.container {
+    min-width: 97%;
+    overflow-x: hidden;
+    .logo{
+        max-width: 300px;
+        max-height: 180px;
+        float: left;
+        margin-top: 30px;
+    }
+
+    .heading{
+        margin-top: 20px;
+
+        h1{
+            color: $heading-color;
+            font-weight: $headingFont-weight;
+            font-size: 44px;
+        }
+
+        p{
+            font-size: 24px;
+            line-height: 14px;
+            font-weight: $headingFont-weight;
+            color: $paragraph-color;
+        }
+    }
+
+    .welcomeUser{
+        margin-top: 2%;
+        align-items: baseline;
+        justify-content:flex-end ;
+        
+        .welcome{
+            color: $heading-color;
+            font-weight: $headingFont-weight;
+        }
+
+        .userName{
+            color: $paragraph-color;
+            font-weight: $headingFont-weight;
+        }
+    }
+
+    .profilePic{
+        max-width: 80px;
+        max-width: 80px;
+    }
+
+    hr{
+        max-width: 100%;
+        margin-left: 2%;
+    }
+    
+}
