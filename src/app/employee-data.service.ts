@@ -9,6 +9,7 @@ import { EmployeeProfileComponent } from './employee-profile/employee-profile.co
 })
 export class EmployeeDataService {
   public displayEmployees = new Subject<Employee[]>();
+  public allEmployees = new Subject<Employee[]>();
   public filterValue: string = "First Name";
   fetchedEmployee! : Employee;
   newEmployeeList! : Employee[]
@@ -51,8 +52,9 @@ export class EmployeeDataService {
   }
 
   public getAllEmployeesOnReset() {
-    let allEmployees : Employee[] = this.getData();
-    this.displayEmployees.next(allEmployees);
+    let allNewEmployees : Employee[] = this.getData();
+    this.displayEmployees.next(allNewEmployees);
+    this.allEmployees.next(allNewEmployees);
   }
 
   public getEmployeeById(id: number){
@@ -95,9 +97,10 @@ export class EmployeeDataService {
     let stringId: string = id.toString();
     localStorage.removeItem(stringId);
     this.newEmployeeList = this.getData();
-    console.log(this.newEmployeeList);
     this.displayEmployees.next(this.newEmployeeList);
+    this.allEmployees.next(this.newEmployeeList);
   }
+  
 }
 
 

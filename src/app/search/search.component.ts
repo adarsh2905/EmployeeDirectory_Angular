@@ -1,8 +1,7 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 import { EmployeeDataService } from '../employee-data.service';
-import { Employee } from '../employee.model';
 
 @Component({
   selector: 'app-search',
@@ -34,7 +33,7 @@ export class SearchComponent implements OnInit {
     this.employeeDataService.filterValue = (e.target as HTMLSelectElement).value;
   }
 
-  @ViewChild("filter")
+  @ViewChild("toggleButton")
   filter!: ElementRef;
   clearInput(){
     this.employeeDataService.getAllEmployeesOnReset();

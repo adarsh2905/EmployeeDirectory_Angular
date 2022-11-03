@@ -1,11 +1,15 @@
 <div>
     <ul><h3>Departments</h3>
-        <li *ngFor="let department of departments"><a href="" (click)="getFilteredEmployeeList(department, 'Department')">{{department}}</a></li>
+        <li *ngFor="let department of departments"><a href="" (click)="getFilteredEmployeeList(department, 'Department')">{{department}} ({{departmentMap.get(department)}})</a></li>
     </ul>
-    <ul><h3>Offices</h3>
-        <li *ngFor="let office of offices"><a href="" (click)="getFilteredEmployeeList(office, 'Office')">{{office}}</a></li>
+    <ul class="headingMargin"><h3>Offices</h3>
+        <li *ngFor="let office of offices"><a href="" (click)="getFilteredEmployeeList(office, 'Office')">{{office}} ({{officeMap.get(office)}})</a></li>
     </ul>  
-    <ul><h3>Job Titles</h3>
-        <li *ngFor="let jobTitle of displayJobTitles" (click)="getFilteredEmployeeList(jobTitle, 'Job Title')"><a href="">{{jobTitle}}</a></li>
+    <ul class="headingMargin"><h3>Job Titles</h3>
+        <li *ngFor="let jobTitle of displayJobTitles" (click)="getFilteredEmployeeList(jobTitle, 'Job Title')"><a href="">{{jobTitle}} ({{jobTitleMap.get(jobTitle)}})</a></li>
     </ul>
+    <ul *ngIf="viewLess">
+        <li *ngFor="let jobTitle of hiddenJobTitle" (click)="getFilteredEmployeeList(jobTitle, 'Job Title')"><a href="">{{jobTitle}} ({{jobTitleMap.get(jobTitle)}})</a></li>
+    </ul>
+    <button (click)="toggleList()" class="toggleButton">{{viewLess ? 'view less' : 'view more'}}</button>
 </div>

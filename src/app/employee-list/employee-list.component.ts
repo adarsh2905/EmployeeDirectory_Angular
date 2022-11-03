@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { EmployeeProfileComponent } from '../employee-profile/employee-profile.component';
 import { EmployeeDataService } from '../employee-data.service';
 import { Employee } from '../employee.model';
 import { Subscription } from 'rxjs';
@@ -15,9 +13,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
   employeeSubsciption!: Subscription;
 
-  constructor(
-    private matDialog : MatDialog, private employeeDataService : EmployeeDataService
-  ) { }
+  constructor( private employeeDataService : EmployeeDataService) { }
 
   ngOnInit(): void {
     this.employeeDataService.getAllEmployees().subscribe(res => {

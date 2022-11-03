@@ -5,7 +5,10 @@ div {
 	padding-left: 5%;
 
 	ul {
-		margin-bottom: 15%;
+
+		.headingMargin {
+			margin-top: 10%;
+		}
 
 		li{
 			font-size: 22px;
@@ -22,5 +25,17 @@ div {
 				color: blue;
 			}
 		}
+	}
+
+	.toggleButton {
+		color: blue;
+		border: none;
+		outline: none;
+		background-color: white;
+		font-size: 20px;
+		font-weight: 600;
+		transition: 0.4s;
+		cursor: pointer;
+		margin-left: 2rem;
 	}
 }
