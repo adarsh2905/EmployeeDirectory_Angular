@@ -3,10 +3,12 @@ import { Subject, Observable, of } from 'rxjs';
 import { Employee } from './employee.model';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class EmployeeDataService {
   public displayEmployees = new Subject<Employee[]>();
   public allEmployees = new Subject<Employee[]>();
@@ -19,6 +21,12 @@ export class EmployeeDataService {
     employee.id = this.getLatestId() + 1;
     localStorage.setItem(JSON.stringify(this.getLatestId() + 1), JSON.stringify(employee));
     localStorage.setItem('latestId', JSON.stringify(this.getLatestId() + 1));
+    this.getAllEmployeesOnReset();
+  }
+
+  public updateEmployeeData(empId: number, employee : Employee){
+    employee.id = empId;
+    localStorage.setItem(JSON.stringify(empId), JSON.stringify(employee));
     this.getAllEmployeesOnReset();
   }
 
@@ -67,6 +75,12 @@ export class EmployeeDataService {
     event?.preventDefault();
   }
 
+  public getEmployeeDetails(id : number) : Employee{
+    let stringId = id.toString();
+    this.fetchedEmployee = JSON.parse(localStorage.getItem(stringId)!) as Employee;
+    return this.fetchedEmployee;
+  }
+
   getUpdatedFilter(filter: string): string {
     let obj: any = {
       "First Name": "firstName",
@@ -93,14 +107,21 @@ export class EmployeeDataService {
     this.displayEmployees.next(filteredEmployeeList);
   }
 
+  updateEmployeeDetails(employeeId: number){
+    this.matDialog.open(EmployeeFormComponent, {
+      data: {isAddMode: false, empId: employeeId},
+      "width" : '40%',
+      "height" : '80%'
+    });
+  }
+
   public deleteEmployeeFromList(id : number){
     let stringId: string = id.toString();
     localStorage.removeItem(stringId);
     this.newEmployeeList = this.getData();
     this.displayEmployees.next(this.newEmployeeList);
     this.allEmployees.next(this.newEmployeeList);
-  }
-  
+  }  
 }
 
 

@@ -8,8 +8,8 @@
     </div>
     <div>
         <label for="filter">Filter by</label>
-        <select name="filterBy" class="filter" #filter (change)="setFilterValue($event)" [value]="filters[0]">
-            <option *ngFor="let filter of filters" [value]="filter">{{filter}}</option>
+        <select name="filterBy" class="filter" #filter (change)="setFilterValue($event)" [value]=filters[0]>
+            <option *ngFor="let filter of filters" [value]=filter>{{filter}}</option>
         </select>
         <button type="button" id="addEmployee" class="btn btn-primary" (click)="openFormDialog()">Add Employee</button>
     </div>

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Employee } from '../employee.model';
+import { MatDialog } from '@angular/material/dialog';
 import { EmployeeDataService } from '../employee-data.service';
+import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 
 @Component({
   selector: 'app-employee-profile',
@@ -9,12 +11,20 @@ import { EmployeeDataService } from '../employee-data.service';
 })
 export class EmployeeProfileComponent implements OnInit {
 
-  constructor(private employeeDataService : EmployeeDataService) { }
+  firstName : string = "";
+  lastName : string = "";
+  preferredName : string = "";
 
-  ngOnInit(): void {
-  }
+  constructor(private employeeDataService : EmployeeDataService, private matDialog: MatDialog) { }
+
+  ngOnInit(): void {}
 
   employee : Employee = this.employeeDataService.fetchedEmployee;
+
+  public editEmployeeDetails(employee : Employee) {
+    this.matDialog.closeAll();
+    this.employeeDataService.updateEmployeeDetails(employee.id); 
+  }
 
   public deleteEmployee(id : number){
     this.employeeDataService.deleteEmployeeFromList(id);

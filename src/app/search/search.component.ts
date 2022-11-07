@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
 
   openFormDialog() {
     this.matDialog.open(EmployeeFormComponent, {
+      data: {isAddMode: true},
       "width": '40%',
       "height": '80%'
     });
@@ -33,7 +34,7 @@ export class SearchComponent implements OnInit {
     this.employeeDataService.filterValue = (e.target as HTMLSelectElement).value;
   }
 
-  @ViewChild("toggleButton")
+  @ViewChild("filter")
   filter!: ElementRef;
   clearInput(){
     this.employeeDataService.getAllEmployeesOnReset();

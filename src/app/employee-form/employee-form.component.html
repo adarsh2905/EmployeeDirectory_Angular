@@ -1,74 +1,96 @@
-<h1 mat-dialog-title>Add New Employee</h1>
+<h1 mat-dialog-title>{{isAddMode ? "Add New Employee" : "Update Employee"}}</h1>
 <div class="container" mat-dialog-content>
     <form [formGroup]="employeeForm" #formDir="ngForm" (ngSubmit)="saveEmployeeDetails(this.employeeForm.value)">
-            <label for="fname" class="form-label">First Name:</label><br>
-            <input [class.is-invalid] = "employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched" type="text" id="firstName" class="form-control" formControlName = "firstName">
-            <div *ngIf="((employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched) || employeeForm.get('firstName')==null)">
-                <small *ngIf="employeeForm.get('firstName')?.errors?.['required']" class="text-danger">
-                    First name is required.
-                </small>
-            </div><br>
-            <label for="lname" class="form-label">Last Name:</label><br>
-            <input [class.is-invalid] = "employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched" type="text" id="lastName" class="form-control" formControlName = "lastName">
-            <div *ngIf="((employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched) || employeeForm.get('lastName')==null)">
-                <small *ngIf="employeeForm.get('lastName')?.errors?.['required']" class="text-danger">
-                    Last name is required.
-                </small>
-            </div><br>
-            
-            <label for="pname" class="form-label">Preferred Name:</label><br>
-            <input type="text" id="preferredName" class="form-control" formControlName="preferredName"><br>
+        <label for="fname" class="form-label">First Name:</label><br>
+        <input #firstName
+            [class.is-invalid]="employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched"
+            type="text" id="firstName" class="form-control" formControlName="firstName">
+        <div
+            *ngIf="((employeeForm.get('firstName')?.invalid && employeeForm.get('firstName')?.touched) || employeeForm.get('firstName')==null)">
+            <small *ngIf="employeeForm.get('firstName')?.errors?.['required']" class="text-danger">
+                First name is required.
+            </small>
+        </div><br>
+        <label for="lname" class="form-label">Last Name:</label><br>
+        <input #lastName
+            [class.is-invalid]="employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched"
+            type="text" id="lastName" class="form-control" formControlName="lastName">
+        <div
+            *ngIf="((employeeForm.get('lastName')?.invalid && employeeForm.get('lastName')?.touched) || employeeForm.get('lastName')==null)">
+            <small *ngIf="employeeForm.get('lastName')?.errors?.['required']" class="text-danger">
+                Last name is required.
+            </small>
+        </div><br>
 
-            <label for="email" class="form-label">Email:</label><br>
-            <input [class.is-invalid] = "employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched" type="email" id="email" class="form-control" formControlName="email">
-            <div *ngIf="(employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched) || employeeForm.get('email')?.dirty">
-                <small *ngIf="employeeForm.get('email')?.errors?.['required']" class="text-danger">Email is required.</small>
-                <small *ngIf="employeeForm.get('email')?.errors?.['pattern']" class="text-danger">Please provide a valid email address.</small>
-            </div><br>
-            
-            <label for="jobTitle" class="form-label">Job Title</label><br>
-            <select id="jobTitle" class="form-select" formControlName="jobTitle">
-            <option value = "" disabled selected hidden>-- Select Job Title --</option>
-            <option *ngFor="let jobTitle of jobTitles">{{jobTitle}}</option>
-            </select><br>
+        <label for="pname" class="form-label">Preferred Name:</label><br>
+        <input #preferredName type="text" id="preferredName" class="form-control" formControlName="preferredName"><br>
 
-            <label for="office" class="form-label">Office</label><br>
-            <select id="office" class="form-select" formControlName="office">
-            <option value = "" disabled selected hidden>-- Select Office --</option>
-            <option *ngFor="let office of offices">{{office}}</option>
-            </select><br>
+        <label for="email" class="form-label">Email:</label><br>
+        <input #email [class.is-invalid]="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched"
+            type="email" id="email" class="form-control" formControlName="email">
+        <div
+            *ngIf="(employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched) || employeeForm.get('email')?.dirty">
+            <small *ngIf="employeeForm.get('email')?.errors?.['required']" class="text-danger">Email is
+                required.</small>
+            <small *ngIf="employeeForm.get('email')?.errors?.['pattern']" class="text-danger">Please provide a valid
+                email address.</small>
+        </div><br>
 
-            <label for="department" class="form-label">Department</label><br>
-            <select id="department" class="form-select" formControlName="department">
-            <option value = "" disabled selected hidden>-- Select Department --</option>
-            <option *ngFor="let department of departments">{{department}}</option>
-            </select><br>
+        <label for="jobTitle" class="form-label">Job Title</label><br>
+        <select #jobTitle id="jobTitle" class="form-select" formControlName="jobTitle">
+            <option value="" disabled selected hidden>-- Select Job Title --</option>
+            <option *ngFor="let jobTitle of jobTitles" [value]=jobTitle>{{jobTitle}}</option>
+        </select><br>
 
-            <label for="telephone" class="form-label">Phone Number</label><br>
-            <input [class.is-invalid] = "employeeForm.get('telephone')?.invalid && employeeForm.get('telephone')?.touched" type="tel" class="form-control" id="telephone" formControlName="telephone">
-            <div *ngIf="(employeeForm.get('telephone')?.invalid && employeeForm.get('telephone')?.touched) || employeeForm.get('telephone')?.dirty">
-                <small *ngIf="employeeForm.get('telephone')?.errors?.['required']" class="text-danger">Mobile number is required.</small>
-                <small *ngIf="employeeForm.get('telephone')?.errors?.['pattern']" class="text-danger">Please provide a valid mobile number.</small>
-            </div><br>
+        <label for="office" class="form-label">Office</label><br>
+        <select #office id="office" class="form-select" formControlName="office">
+            <option value="" disabled selected hidden>-- Select Office --</option>
+            <option *ngFor="let office of offices" [value]=office>{{office}}</option>
+        </select><br>
 
-            <label for="skypeId" class="form-label">Skype ID</label><br>
-            <input [class.is-invalid] = "employeeForm.get('skypeId')?.invalid && employeeForm.get('skypeId')?.touched" type="number" id="skypeId" class="form-control" formControlName="skypeId">
-            <div *ngIf="((employeeForm.get('skypeId')?.invalid && employeeForm.get('skypeId')?.touched) || employeeForm.get('skypeId')==null)">
-                <small *ngIf="employeeForm.get('skypeId')?.errors?.['required']" class="text-danger">
-                    Skype ID is required.
-                </small>
-            </div><br>
+        <label for="department" class="form-label">Department</label><br>
+        <select #department id="department" class="form-select" formControlName="department">
+            <option value="" disabled selected hidden>-- Select Department --</option>
+            <option *ngFor="let department of departments" [value]=department
+            >{{department}}</option>
+        </select><br>
 
-            <label for="image" class="form-label">Upload your picture</label><br>
-            <input (change)="generateImageUrl($event)" [class.is-invalid] = "employeeForm.get('imageUrl')?.invalid && employeeForm.get('imageUrl')?.touched" type="file" class="form-control" accept="image/*" id="image" formControlName="imageUrl">
-            <div *ngIf="((employeeForm.get('imageUrl')?.invalid && employeeForm.get('imageUrl')?.touched) || employeeForm.get('imageUrl')==null)">
-                <small *ngIf="employeeForm.get('imageUrl')?.errors?.['required']" class="text-danger">
-                    Image is required.
-                </small>
-            </div><br><br>
-            <div mat-dialog-actions>
-                <button id="submit" type="submit" class="btn btn-primary" (click)="onNoClick()" [disabled]="!employeeForm.valid">Submit</button>
-                <button id="cancel" class="btn btn-secondary" mat-button [mat-dialog-close]="true">Cancel</button>
-            </div>
+        <label #telephone for="telephone" class="form-label">Phone Number</label><br>
+        <input [class.is-invalid]="employeeForm.get('telephone')?.invalid && employeeForm.get('telephone')?.touched"
+            type="tel" class="form-control" id="telephone" formControlName="telephone">
+        <div
+            *ngIf="(employeeForm.get('telephone')?.invalid && employeeForm.get('telephone')?.touched) || employeeForm.get('telephone')?.dirty">
+            <small *ngIf="employeeForm.get('telephone')?.errors?.['required']" class="text-danger">Mobile number is
+                required.</small>
+            <small *ngIf="employeeForm.get('telephone')?.errors?.['pattern']" class="text-danger">Please provide a valid
+                mobile number.</small>
+        </div><br>
+
+        <label for="skypeId" class="form-label">Skype ID</label><br>
+        <input #skypeId
+            [class.is-invalid]="employeeForm.get('skypeId')?.invalid && employeeForm.get('skypeId')?.touched"
+            type="number" id="skypeId" class="form-control" formControlName="skypeId">
+        <div
+            *ngIf="((employeeForm.get('skypeId')?.invalid && employeeForm.get('skypeId')?.touched) || employeeForm.get('skypeId')==null)">
+            <small *ngIf="employeeForm.get('skypeId')?.errors?.['required']" class="text-danger">
+                Skype ID is required.
+            </small>
+        </div><br>
+
+        <label for="image" class="form-label">Upload your picture</label><br>
+        <input (change)="generateImageUrl($event)"
+            [class.is-invalid]="employeeForm.get('imageUrl')?.invalid && employeeForm.get('imageUrl')?.touched"
+            type="file" class="form-control" accept="image/*" id="image" formControlName="imageUrl">
+        <div
+            *ngIf="((employeeForm.get('imageUrl')?.invalid && employeeForm.get('imageUrl')?.touched) || employeeForm.get('imageUrl')==null)">
+            <small *ngIf="employeeForm.get('imageUrl')?.errors?.['required']" class="text-danger">
+                Image is required.
+            </small>
+        </div><br><br>
+        <div mat-dialog-actions>
+            <button id="submit" type="submit" class="btn btn-primary" (click)="onNoClick()"
+                [disabled]="!employeeForm.valid">{{isAddMode ? "Submit" : "Update"}}</button>
+            <button id="cancel" class="btn btn-secondary" mat-button [mat-dialog-close]="true">Cancel</button>
+        </div>
     </form>
 </div>

@@ -10,6 +10,6 @@
     <p class="profileDescription"><span>Department</span> {{employee.department}}</p>
     <p class="profileDescription"><span>Phone No. :</span> {{employee.telephone}}</p>
     <p class="profileDescription"><span>Skype Id :</span> {{employee.skypeId}}</p>
-    <button class="btn btn-primary" type="button" value="Edit">Update</button>
+    <button class="btn btn-primary" type="button" value="Edit" (click)="editEmployeeDetails(employee)">Update</button>
     <button class="btn btn-secondary" id="delete" value="Delete" mat-button [mat-dialog-close]="true" (click)="deleteEmployee(employee.id)">Delete</button>
 </div>
